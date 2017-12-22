@@ -2,4 +2,44 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #1c7430;
+  color: #fff;
+}
+
+#root {
+  position: relative;
+  height: 100vh;
+}
+
+.start-menu {
+  width: 503px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-top: -130px;
+  margin-left: -250px;
+  text-align: center;
+}
+
+.start-logo {
+  width: 503px;
+  height: 262px;
+  background: url('/img/StartGame.png') no-repeat;
+}
+
+.start-menu .btn-start {
+  background: #fff;
+  opacity: 0.85;
+  padding: 14px 25px;
+  color: #1c7430;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+}
+
+.start-menu .btn-start:hover {
+  background: #fff;
+  cursor: pointer;
+  opacity: 1;
 }

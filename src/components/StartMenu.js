@@ -7,14 +7,10 @@ class StartMenu extends Component {
 
   render() {
     return (
-      <div className="start-menu">
-        <div className="start-logo" />
+      <div className="menu">
+        <div className="logo start-img" />
         <h1>MEMORY GAME</h1>
-        <button
-          className="btn-start"
-          onClick={this.clickHandler}
-          data-tid="button"
-        >
+        <button className="btn" onClick={this.clickHandler} data-tid="button">
           Начать игру
         </button>
       </div>

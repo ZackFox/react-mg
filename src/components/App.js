@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
 
-import StartMenu from './startMenu/StartMenu';
-import Board from './board/Board';
+import StartMenu from './StartMenu';
+import Board from './Board';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      allCards: [],
-      cardA: {},
-      cardB: {},
-      message: '',
-      isStart: false,
-    };
+    this.state = { isStart: false };
   }
 
   onStart = () => {
-    this.setState(() => ({ isStart: !this.setState.isStart }));
+    this.setState({ ...this.state, isStart: !this.setState.isStart });
     console.log('run !');
   };
 

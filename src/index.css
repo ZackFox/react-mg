@@ -11,7 +11,7 @@ body {
   height: 100vh;
 }
 
-.start-menu {
+.menu {
   width: 503px;
   position: absolute;
   top: 40%;
@@ -21,13 +21,20 @@ body {
   text-align: center;
 }
 
-.start-logo {
+.logo {
   width: 503px;
   height: 262px;
+}
+
+.start-img {
   background: url('/img/StartGame.png') no-repeat;
 }
 
-.start-menu .btn-start {
+.over-img {
+  background: url('/img/Over.png') no-repeat;
+}
+
+.menu .btn {
   background: #fff;
   opacity: 0.85;
   padding: 14px 25px;
@@ -38,8 +45,250 @@ body {
   border-radius: 5px;
 }
 
-.start-menu .btn-start:hover {
+.menu .btn:hover {
   background: #fff;
   cursor: pointer;
   opacity: 1;
+}
+
+.board {
+  padding: 40px;
+}
+
+.board-info {
+  display: flex;
+  padding: 10px 0px;
+  justify-content: space-between;
+}
+
+.board .btn-reset {
+  /* float: left; */
+}
+
+.board .score {
+  /* float: right; */
+}
+
+.cards-set {
+  clear: both;
+  width: 800px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.card {
+  width: 115px;
+  height: 160px;
+}
+
+.card-2H {
+  background: url('/img/2H.png') no-repeat;
+  background-size: 100%;
+}
+.card-2D {
+  background: url('/img/2D.png') no-repeat;
+  background-size: 100%;
+}
+.card-2C {
+  background: url('/img/2C.png') no-repeat;
+  background-size: 100%;
+}
+.card-2S {
+  background: url('/img/2S.png') no-repeat;
+  background-size: 100%;
+}
+.card-3H {
+  background: url('/img/3H.png') no-repeat;
+  background-size: 100%;
+}
+.card-3D {
+  background: url('/img/3D.png') no-repeat;
+  background-size: 100%;
+}
+.card-3C {
+  background: url('/img/3C.png') no-repeat;
+  background-size: 100%;
+}
+.card-3S {
+  background: url('/img/3S.png') no-repeat;
+  background-size: 100%;
+}
+.card-4H {
+  background: url('/img/4H.png') no-repeat;
+  background-size: 100%;
+}
+.card-4D {
+  background: url('/img/4D.png') no-repeat;
+  background-size: 100%;
+}
+.card-4C {
+  background: url('/img/4C.png') no-repeat;
+  background-size: 100%;
+}
+.card-4S {
+  background: url('/img/4S.png') no-repeat;
+  background-size: 100%;
+}
+.card-5H {
+  background: url('/img/5H.png') no-repeat;
+  background-size: 100%;
+}
+.card-5D {
+  background: url('/img/5D.png') no-repeat;
+  background-size: 100%;
+}
+.card-5C {
+  background: url('/img/5C.png') no-repeat;
+  background-size: 100%;
+}
+.card-5S {
+  background: url('/img/5S.png') no-repeat;
+  background-size: 100%;
+}
+.card-6H {
+  background: url('/img/6H.png') no-repeat;
+  background-size: 100%;
+}
+.card-6D {
+  background: url('/img/6D.png') no-repeat;
+  background-size: 100%;
+}
+.card-6C {
+  background: url('/img/6C.png') no-repeat;
+  background-size: 100%;
+}
+.card-6S {
+  background: url('/img/3S.png') no-repeat;
+  background-size: 100%;
+}
+.card-7H {
+  background: url('/img/7H.png') no-repeat;
+  background-size: 100%;
+}
+.card-7D {
+  background: url('/img/7D.png') no-repeat;
+  background-size: 100%;
+}
+.card-7C {
+  background: url('/img/7C.png') no-repeat;
+  background-size: 100%;
+}
+.card-7S {
+  background: url('/img/7S.png') no-repeat;
+  background-size: 100%;
+}
+.card-8H {
+  background: url('/img/8H.png') no-repeat;
+  background-size: 100%;
+}
+.card-8D {
+  background: url('/img/8D.png') no-repeat;
+  background-size: 100%;
+}
+.card-8C {
+  background: url('/img/8C.png') no-repeat;
+  background-size: 100%;
+}
+.card-8S {
+  background: url('/img/8S.png') no-repeat;
+  background-size: 100%;
+}
+.card-9H {
+  background: url('/img/9H.png') no-repeat;
+  background-size: 100%;
+}
+.card-9D {
+  background: url('/img/9D.png') no-repeat;
+  background-size: 100%;
+}
+.card-9C {
+  background: url('/img/9C.png') no-repeat;
+  background-size: 100%;
+}
+.card-9S {
+  background: url('/img/9S.png') no-repeat;
+  background-size: 100%;
+}
+.card-0H {
+  background: url('/img/0H.png') no-repeat;
+  background-size: 100%;
+}
+.card-0D {
+  background: url('/img/0D.png') no-repeat;
+  background-size: 100%;
+}
+.card-0C {
+  background: url('/img/0C.png') no-repeat;
+  background-size: 100%;
+}
+.card-0S {
+  background: url('/img/0S.png') no-repeat;
+  background-size: 100%;
+}
+.card-JH {
+  background: url('/img/JH.png') no-repeat;
+  background-size: 100%;
+}
+.card-JD {
+  background: url('/img/JD.png') no-repeat;
+  background-size: 100%;
+}
+.card-JC {
+  background: url('/img/JC.png') no-repeat;
+  background-size: 100%;
+}
+.card-JS {
+  background: url('/img/JS.png') no-repeat;
+  background-size: 100%;
+}
+.card-QH {
+  background: url('/img/QH.png') no-repeat;
+  background-size: 100%;
+}
+.card-QD {
+  background: url('/img/QD.png') no-repeat;
+  background-size: 100%;
+}
+.card-QC {
+  background: url('/img/QC.png') no-repeat;
+  background-size: 100%;
+}
+.card-QS {
+  background: url('/img/QS.png') no-repeat;
+  background-size: 100%;
+}
+.card-KH {
+  background: url('/img/KH.png') no-repeat;
+  background-size: 100%;
+}
+.card-KD {
+  background: url('/img/KD.png') no-repeat;
+  background-size: 100%;
+}
+.card-KC {
+  background: url('/img/KC.png') no-repeat;
+  background-size: 100%;
+}
+.card-KS {
+  background: url('/img/KS.png') no-repeat;
+  background-size: 100%;
+}
+.card-AH {
+  background: url('/img/AH.png') no-repeat;
+  background-size: 100%;
+}
+.card-AD {
+  background: url('/img/AD.png') no-repeat;
+  background-size: 100%;
+}
+.card-AC {
+  background: url('/img/AC.png') no-repeat;
+  background-size: 100%;
+}
+.card-AS {
+  background: url('/img/AS.png') no-repeat;
+  background-size: 100%;
 }

@@ -11,7 +11,14 @@ class CardItem extends Component {
   clickHandler = () => {};
 
   render() {
-    return <div className="card">card</div>;
+    const { cards } = this.props;
+    return (
+      <div className="cards-set">
+        {cards.map((item, i) => (
+          <div key={i} className={`card card-${item}`} />
+        ))}
+      </div>
+    );
   }
 }
 

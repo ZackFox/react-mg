@@ -1,10 +1,4 @@
-export default array => {
-  let randArr = shuffle(array).slice(0, 9);
-  let result = randArr.concat(randArr);
-  return shuffle(result);
-};
-
-function shuffle(array) {
+const shuffle = array => {
   let currentIndex = array.length;
   let temporaryValue;
   let randomIndex;
@@ -19,4 +13,6 @@ function shuffle(array) {
   }
 
   return array;
-}
+};
+
+export default shuffle;

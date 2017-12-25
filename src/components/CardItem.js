@@ -8,15 +8,33 @@ class CardItem extends Component {
     };
   }
 
-  clickHandler = () => {};
+  turnUp = () => {
+    this.setState({ isFlipped: true });
+  };
+
+  // turnDown = () => {
+  //   this.setState({ isFlipped: false });
+  // };
+
+  clickHandler = () => {
+    // this.turnUp();
+    this.props.compareHandler(this.props.card);
+  };
 
   render() {
-    const { cards } = this.props;
+    const { card } = this.props;
+
     return (
-      <div className="cards-set">
-        {cards.map((item, i) => (
-          <div key={i} className={`card card-${item}`} />
-        ))}
+      <div
+        className={`card ${card.isFlipped ? 'flipped' : ''}`}
+        ref={el => (this.card = el)}
+        onClick={this.clickHandler}
+      >
+        <div
+          className={`card-front card-${card.value}`}
+          data-card={card.value}
+        />
+        <div className="card-back" />
       </div>
     );
   }

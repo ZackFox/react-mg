@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import CardItem from './CardItem';
+import CardsSet from './CardsSet';
 import OverMenu from './OverMenu';
 
-import cards from '../utils/cards';
-import randomizer from '../utils/randomizer';
+import cards from '../config/cards';
+import generateCouples from '../utils/generateCouples';
 
 class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: randomizer(cards),
+      cards: generateCouples(cards),
       score: 0,
+      cardA: '',
+      cardB: '',
       isOver: false,
-      cardA: {},
-      cardB: {},
-      message: '',
     };
   }
 
@@ -23,14 +22,31 @@ class Board extends Component {
   }
 
   isOverHandler = () => {
-    this.setState({ ...this.state, isOver: !this.state.isOver });
+    this.setState(prevState => ({ ...prevState, isOver: !prevState.isOver }));
   };
 
   onReset = () => {
-    this.setState({ ...this.state, cards: randomizer(cards) });
+    this.setState({ ...this.state, cards: generateCouples(cards) });
+  };
+
+  flipCard = card => {
+    const { cards } = this.state;
+    const updatedCards = Object.assign([], cards);
+    updatedCards.map(item => {
+      if (item.id === card.id) {
+        item.isFlipped = true;
+      }
+    });
+    this.setState({ ...this.state, cards: updatedCards });
+  };
+
+  onCompare = card => {
+    this.flipCard(card);
   };
 
   render() {
+    const { score, cards } = this.state;
+
     return this.state.isOver ? (
       <OverMenu onReset={this.isOverHandler} />
     ) : (
@@ -40,11 +56,11 @@ class Board extends Component {
             Начать заново
           </button>
           <span className="score">
-            Очки: <span>{this.state.score}</span>
+            Очки: <span>{score}</span>
           </span>
         </div>
 
-        <CardItem cards={this.state.cards} />
+        <CardsSet cards={cards} cardComparator={this.onCompare} />
       </div>
     );
   }

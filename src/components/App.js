@@ -10,8 +10,9 @@ class App extends Component {
   }
 
   onStart = () => {
-    this.setState({ ...this.state, isStart: !this.setState.isStart });
-    console.log('run !');
+    this.setState(prevState => ({
+      isStart: !prevState.isStart,
+    }));
   };
 
   render() {

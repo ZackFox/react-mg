@@ -10,9 +10,8 @@ class Board extends Component {
     super(props);
     this.state = {
       cards: generateCouples(cards),
+      tempCard: null,
       score: 0,
-      cardA: '',
-      cardB: '',
       isOver: false,
     };
   }
@@ -26,22 +25,44 @@ class Board extends Component {
   };
 
   onReset = () => {
-    this.setState({ ...this.state, cards: generateCouples(cards) });
+    const newCards = generateCouples(cards);
+    this.setState(prevState => ({
+      ...prevState,
+      cards: newCards,
+    }));
   };
 
-  flipCard = card => {
+  flipCard = (card, bool) => {
     const { cards } = this.state;
-    const updatedCards = Object.assign([], cards);
+    const updatedCards = [...cards];
     updatedCards.map(item => {
       if (item.id === card.id) {
-        item.isFlipped = true;
+        item.isFlipped = bool;
       }
     });
-    this.setState({ ...this.state, cards: updatedCards });
+    this.setState(prevState => ({ ...prevState, cards: updatedCards }));
+  };
+
+  increaseScore = () => {
+    const { score, cards } = this.state;
   };
 
   onCompare = card => {
-    this.flipCard(card);
+    const { tempCard, cards } = this.state;
+    this.flipCard(card, true);
+    if (tempCard) {
+      if (tempCard.value === card.value) {
+        //код исчезновения карты
+      } else {
+        setTimeout(() => {
+          this.flipCard(tempCard, false);
+          this.flipCard(card, false);
+        }, 1000);
+      }
+      this.setState(prevState => ({ ...prevState, tempCard: null }));
+    } else {
+      this.setState(prevState => ({ ...prevState, tempCard: card }));
+    }
   };
 
   render() {

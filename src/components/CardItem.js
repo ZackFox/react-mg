@@ -13,6 +13,9 @@ class CardItem extends Component {
   };
 
   clickHandler = () => {
+    if (this.props.card.isMatch) {
+      return false;
+    }
     this.props.compareHandler(this.props.card);
   };
 
@@ -23,6 +26,7 @@ class CardItem extends Component {
         className={`card ${card.isFlipped ? 'flipped' : ''}`}
         ref={el => (this.card = el)}
         onClick={this.clickHandler}
+        data-tid={`Card${card.isFlipped ? '-flipped' : ''}`}
       >
         <div
           className={`card-front card-${card.value}`}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-class OverMenu extends Component {
-  resetHandler = () => {
-    this.props.onReset();
+class EndGame extends Component {
+  restartHandler = () => {
+    this.props.retry();
   };
 
   render() {
@@ -12,7 +12,11 @@ class OverMenu extends Component {
         <h1>
           Поздравляем! Ваш итоговый счет: <span>{this.props.score}</span>
         </h1>
-        <button className="btn" onClick={this.resetHandler} data-tid="button">
+        <button
+          className="btn"
+          onClick={this.restartHandler}
+          data-tid="EndGame-retryGame"
+        >
           Еще раз
         </button>
       </div>
@@ -20,4 +24,4 @@ class OverMenu extends Component {
   }
 }
 
-export default OverMenu;
+export default EndGame;

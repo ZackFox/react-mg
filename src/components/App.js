@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import StartMenu from './StartMenu';
-import Board from './Board';
+import Game from './Game';
 
 class App extends Component {
   constructor(props) {
@@ -10,16 +10,14 @@ class App extends Component {
   }
 
   onStart = () => {
-    this.setState(prevState => ({
-      isStart: !prevState.isStart,
-    }));
+    this.setState(prevState => ({ ...prevState, isStart: true }));
   };
 
   render() {
     return !this.state.isStart ? (
       <StartMenu startGame={this.onStart} />
     ) : (
-      <Board />
+      <Game />
     );
   }
 }

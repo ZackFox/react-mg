@@ -79,23 +79,23 @@ body {
   align-content: flex-start;
 }
 
+.hidden {
+  opacity: 0;
+}
+
 .card {
   width: 115px;
   height: 160px;
   position: relative;
   margin-bottom: 20px;
   transform-style: preserve-3d;
-  transform: perspective(180px) rotateY(0deg);
+  transform: rotateY(0deg);
   transition: 1s;
   z-index: 25;
 }
 
 .flipped {
-  transform: rotateY(180deg);
-}
-
-.hidden {
-  opacity: 0;
+  transform: perspective(180px) rotateY(180deg);
 }
 
 .card:hover {
@@ -107,6 +107,8 @@ body {
   width: 115px;
   height: 159px;
   position: absolute;
+  backface-visibility: hidden;
+  transition: 1s;
 }
 
 .card-back {
@@ -114,14 +116,14 @@ body {
   background: #fff;
   top: 0;
   left: 0;
-  transform: perspective(180px) rotateY(0deg);
+  transform: rotateY(0deg);
 }
 
 .card-front {
   z-index: 10;
   top: 0;
   left: 0;
-  transform: perspective(180px) rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card-2H {

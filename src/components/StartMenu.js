@@ -10,7 +10,11 @@ class StartMenu extends Component {
       <div className="menu">
         <div className="logo start-img" />
         <h1>MEMORY GAME</h1>
-        <button className="btn" onClick={this.clickHandler} data-tid="button">
+        <button
+          className="btn"
+          onClick={this.clickHandler}
+          data-tid="NewGame-startGame"
+        >
           Начать игру
         </button>
       </div>

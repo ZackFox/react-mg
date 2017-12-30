@@ -12,18 +12,12 @@ class CardItem extends Component {
     this.setState({ isFlipped: true });
   };
 
-  // turnDown = () => {
-  //   this.setState({ isFlipped: false });
-  // };
-
   clickHandler = () => {
-    // this.turnUp();
     this.props.compareHandler(this.props.card);
   };
 
   render() {
     const { card } = this.props;
-
     return (
       <div
         className={`card ${card.isFlipped ? 'flipped' : ''}`}

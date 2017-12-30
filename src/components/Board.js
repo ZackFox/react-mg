@@ -13,17 +13,29 @@ class Board extends Component {
       tempCard: null,
       score: 0,
       isOver: false,
+      message: 'У тебя есть 5 секунд, чтобы запомнить карты',
     };
   }
 
   componentDidMount() {
-    // console.log(this.state.cards);
+    const { cards } = this.state;
+    const updatedCards = [...cards];
+    updatedCards.forEach(item => (item.isFlipped = false));
+
+    setTimeout(() => {
+      this.setState(prevState => ({
+        ...prevState,
+        cards: updatedCards,
+        message: '',
+      }));
+    }, 5000);
   }
 
   isOverHandler = () => {
     this.setState(prevState => ({ ...prevState, isOver: !prevState.isOver }));
   };
 
+  //---------------------- reset cards combination
   onReset = () => {
     const newCards = generateCouples(cards);
     this.setState(prevState => ({
@@ -32,8 +44,10 @@ class Board extends Component {
     }));
   };
 
+  //---------------------------- flipping card
   flipCard = (card, bool) => {
     const { cards } = this.state;
+
     const updatedCards = [...cards];
     updatedCards.map(item => {
       if (item.id === card.id) {
@@ -43,18 +57,45 @@ class Board extends Component {
     this.setState(prevState => ({ ...prevState, cards: updatedCards }));
   };
 
+  // ------------------------- increase game score
   increaseScore = () => {
     const { score, cards } = this.state;
+    let total = score;
+    const count = cards.filter(item => !item.isFlipped).length;
+    total += count / 2 * 42;
+    this.setState(prevState => ({ ...prevState, score: total }));
   };
 
+  // -------------------------- increase game score
+  decreaseScore = () => {
+    const { score, cards } = this.state;
+    let total = score;
+    const count = cards.filter(item => item.isFlipped).length;
+    total -= count / 2 * 42;
+    this.setState(prevState => ({ ...prevState, score: total }));
+  };
+
+  // --------------------------- comparing two cards
   onCompare = card => {
     const { tempCard, cards } = this.state;
     this.flipCard(card, true);
     if (tempCard) {
       if (tempCard.value === card.value) {
-        //код исчезновения карты
+        this.increaseScore();
+
+        const remaining = cards.filter(item => !item.isFlipped).length;
+        if (remaining === 0) {
+          this.setState(prevState => ({
+            ...prevState,
+            message: 'Ты сделал это !',
+          }));
+          setTimeout(() => {
+            this.setState(prevState => ({ ...prevState, isOver: true }));
+          }, 2000);
+        }
       } else {
         setTimeout(() => {
+          this.decreaseScore();
           this.flipCard(tempCard, false);
           this.flipCard(card, false);
         }, 1000);
@@ -66,16 +107,17 @@ class Board extends Component {
   };
 
   render() {
-    const { score, cards } = this.state;
+    const { score, cards, isOver, message } = this.state;
 
-    return this.state.isOver ? (
-      <OverMenu onReset={this.isOverHandler} />
+    return isOver ? (
+      <OverMenu onReset={this.isOverHandler} score={score} />
     ) : (
       <div className="board">
         <div className="board-info">
           <button className="btn-reset" onClick={this.onReset}>
             Начать заново
           </button>
+          <span>{message}</span>
           <span className="score">
             Очки: <span>{score}</span>
           </span>

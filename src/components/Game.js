@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import Header from './Header';
-// import Board from './Board';
-import CardsSet from './CardsSet';
+import Board from './Board';
 import EndGame from './EndGame';
 
 import cards from '../config/cards';
@@ -15,29 +13,38 @@ class Game extends Component {
       cards: generateCouples(cards),
       tempCard: null,
       score: 0,
+      showing: false,
       isOver: false,
-      message: 'У тебя есть 5 секунд, чтобы запомнить карты',
+      message: '',
     };
   }
 
-  showCards = () => {
+  hiding = () => {
     const { cards } = this.state;
     const updatedCards = [...cards];
     updatedCards.forEach(item => (item.isFlipped = false));
+    this.setState(prevState => ({
+      ...prevState,
+      cards: updatedCards,
+      message: '',
+    }));
+  };
 
-    setTimeout(() => {
-      this.setState(prevState => ({
-        ...prevState,
-        cards: updatedCards,
-        message: '',
-      }));
-    }, 5000);
+  showing = () => {
+    const updatedCards = generateCouples(cards);
+    updatedCards.forEach(item => (item.isFlipped = true));
+    this.setState(prevState => ({
+      ...prevState,
+      cards: updatedCards,
+      score: 0,
+      message: 'У тебя есть 5 секунд, чтобы запомнить карты',
+    }));
   };
 
   flipOne = card => {
     const { cards } = this.state;
     const updatedCards = [...cards];
-    updatedCards.map(item => {
+    updatedCards.forEach(item => {
       if (item.id === card.id) {
         item.isFlipped = true;
       }
@@ -48,7 +55,7 @@ class Game extends Component {
   flipPair = (cardA, cardB) => {
     const { cards } = this.state;
     const updatedCards = [...cards];
-    updatedCards.map(item => {
+    updatedCards.forEach(item => {
       if (item.id === cardA.id || item.id === cardB.id) {
         item.isFlipped = false;
       }
@@ -59,7 +66,7 @@ class Game extends Component {
   matchPair = (cardA, cardB) => {
     const { cards } = this.state;
     const updatedCards = [...cards];
-    updatedCards.map(item => {
+    updatedCards.forEach(item => {
       if (item.id === cardA.id || item.id === cardB.id) {
         item.isMatch = true;
       }
@@ -83,7 +90,7 @@ class Game extends Component {
     this.setState(prevState => ({ ...prevState, score: total }));
   };
 
-  onCompare = card => {
+  compare = card => {
     const { tempCard, cards } = this.state;
     this.flipOne(card);
 
@@ -98,7 +105,6 @@ class Game extends Component {
             ...prevState,
             message: 'Ты сделал это !',
           }));
-
           setTimeout(() => this.gameOver(), 2000);
         }
       } else {
@@ -117,12 +123,9 @@ class Game extends Component {
     this.setState(prevState => ({ ...prevState, isOver: true }));
   };
 
-  onReset = () => {
-    // const newCards = generateCouples(cards);
-    // this.setState(prevState => ({
-    //   ...prevState,
-    //   cards: newCards,
-    // }));
+  resetGame = () => {
+    this.showing();
+    setTimeout(() => this.hiding(), 5000);
   };
 
   retryGame = () => {
@@ -139,15 +142,16 @@ class Game extends Component {
 
     return !isOver ? (
       <div>
-        <Header score={score} message={message} />
-        <CardsSet
+        <Board
           cards={cards}
-          showCards={this.showCards}
-          comparator={this.onCompare}
+          score={score}
+          message={message}
+          resetGame={this.resetGame}
+          comparator={this.compare}
         />
       </div>
     ) : (
-      <EndGame retry={this.retryGame} score={score} />
+      <EndGame score={score} retry={this.retryGame} />
     );
   }
 }

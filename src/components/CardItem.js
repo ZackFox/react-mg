@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
 
 class CardItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFlipped: false,
-    };
-  }
-
-  turnUp = () => {
-    this.setState({ isFlipped: true });
-  };
-
   clickHandler = () => {
-    if (this.props.card.isMatch) {
+    const { card, compareHandler } = this.props;
+    if (card.isFlipped || card.isMatch) {
       return false;
     }
-    this.props.compareHandler(this.props.card);
+    compareHandler(card);
   };
 
   render() {
@@ -24,7 +14,6 @@ class CardItem extends Component {
     return (
       <div
         className={`card ${card.isFlipped ? 'flipped' : ''}`}
-        ref={el => (this.card = el)}
         onClick={this.clickHandler}
         data-tid={`Card${card.isFlipped ? '-flipped' : ''}`}
       >

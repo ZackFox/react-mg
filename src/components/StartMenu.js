@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class StartMenu extends Component {
-  clickHandler = () => {
-    this.props.startGame();
-  };
-
-  render() {
-    return (
-      <div className="menu">
-        <div className="logo start-img" />
-        <h1>MEMORY GAME</h1>
-        <button
-          className="btn"
-          onClick={this.clickHandler}
-          data-tid="NewGame-startGame"
-        >
-          Начать игру
-        </button>
-      </div>
-    );
-  }
-}
+const StartMenu = ({ startGame }) => {
+  return (
+    <div className="menu">
+      <div className="logo start-img" />
+      <h1>MEMORY GAME</h1>
+      <button className="btn" onClick={startGame} data-tid="NewGame-startGame">
+        Начать игру
+      </button>
+    </div>
+  );
+};
 
 export default StartMenu;

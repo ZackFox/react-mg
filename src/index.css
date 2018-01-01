@@ -55,9 +55,9 @@ body {
   padding: 40px;
 }
 
-.board-info {
+.header {
   display: flex;
-  padding: 10px 0px;
+  margin-bottom: 30px;
   justify-content: space-between;
 }
 

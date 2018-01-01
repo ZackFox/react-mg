@@ -13,8 +13,8 @@ class Board extends Component {
   render() {
     const { cards, score, message, comparator } = this.props;
     return (
-      <div>
-        <div className="board-info">
+      <div className="board">
+        <div className="header">
           <div>
             <button
               className="btn-reset"

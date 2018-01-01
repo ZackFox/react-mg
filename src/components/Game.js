@@ -10,10 +10,9 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: generateCouples(cards),
+      cards: [],
       tempCard: null,
       score: 0,
-      showing: false,
       isOver: false,
       message: '',
     };
@@ -32,7 +31,7 @@ class Game extends Component {
 
   showing = () => {
     const updatedCards = generateCouples(cards);
-    updatedCards.forEach(item => (item.isFlipped = true));
+    // updatedCards.forEach(item => (item.isFlipped = true));
     this.setState(prevState => ({
       ...prevState,
       cards: updatedCards,
@@ -65,6 +64,7 @@ class Game extends Component {
 
   matchPair = (cardA, cardB) => {
     const { cards } = this.state;
+
     const updatedCards = [...cards];
     updatedCards.forEach(item => {
       if (item.id === cardA.id || item.id === cardB.id) {
@@ -129,10 +129,8 @@ class Game extends Component {
   };
 
   retryGame = () => {
-    const newCards = generateCouples(cards);
     this.setState(prevState => ({
       ...prevState,
-      cards: newCards,
       isOver: false,
     }));
   };
@@ -141,15 +139,13 @@ class Game extends Component {
     const { cards, score, message, isOver } = this.state;
 
     return !isOver ? (
-      <div>
-        <Board
-          cards={cards}
-          score={score}
-          message={message}
-          resetGame={this.resetGame}
-          comparator={this.compare}
-        />
-      </div>
+      <Board
+        cards={cards}
+        score={score}
+        message={message}
+        resetGame={this.resetGame}
+        comparator={this.compare}
+      />
     ) : (
       <EndGame score={score} retry={this.retryGame} />
     );

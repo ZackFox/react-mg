@@ -124,6 +124,7 @@ class Game extends Component {
   };
 
   resetGame = () => {
+    clearTimeout();
     this.showing();
     setTimeout(() => this.hiding(), 5000);
   };

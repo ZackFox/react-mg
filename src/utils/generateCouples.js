@@ -8,7 +8,7 @@ const generateCouples = array => {
     id: i,
     value: item,
     isFlipped: true,
-    IsMatch: false,
+    isMatch: false,
   }));
 };
 

@@ -24,7 +24,9 @@ class Board extends Component {
               Начать заново
             </button>
           </div>
-          <div>{message}</div>
+          <div className="message">
+            <span>{message}</span>
+          </div>
           <div className="score" data-tid="Menu-scores">
             Очки: <span>{score}</span>
           </div>

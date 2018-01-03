@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const StartMenu = ({ startGame }) => {
   return (
@@ -10,6 +11,10 @@ const StartMenu = ({ startGame }) => {
       </button>
     </div>
   );
+};
+
+StartMenu.propTypes = {
+  startGame: PropTypes.func.isRequired,
 };
 
 export default StartMenu;

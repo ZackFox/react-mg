@@ -5,6 +5,9 @@ body {
   background: #1c7430;
   color: #fff;
 }
+h1 {
+  opacity: 0.9;
+}
 
 #root {
   position: relative;
@@ -57,16 +60,36 @@ body {
 
 .header {
   display: flex;
+  width: 800px;
+  margin: 0 auto;
   margin-bottom: 30px;
   justify-content: space-between;
 }
 
 .board .btn-reset {
-  /* float: left; */
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.9;
+  outline: none;
+  cursor: pointer;
+}
+
+.board .btn-reset:hover {
+  opacity: 1;
 }
 
 .board .score {
-  /* float: right; */
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.board .message span {
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.9;
 }
 
 .cards-set {
@@ -109,14 +132,16 @@ body {
   position: absolute;
   backface-visibility: hidden;
   transition: 1s;
+  transition-delay: 0.9s;
 }
 
 .card-back {
   z-index: 15;
-  background: #fff;
   top: 0;
   left: 0;
   transform: rotateY(0deg);
+  background: url('/img/BG.png') no-repeat;
+  background-size: 100%;
 }
 
 .card-front {
@@ -124,6 +149,10 @@ body {
   top: 0;
   left: 0;
   transform: rotateY(180deg);
+}
+
+.greatings span {
+  display: block;
 }
 
 .card-2H {

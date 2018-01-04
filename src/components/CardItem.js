@@ -21,10 +21,7 @@ class CardItem extends Component {
         onClick={this.clickHandler}
         data-tid={`Card${card.isFlipped ? '-flipped' : ''}`}
       >
-        <div
-          className={`card-front ${hide} card-${card.value}`}
-          data-card={card.value}
-        />
+        <div className={`card-front ${hide} card-${card.value}`} />
         <div className="card-back" />
       </div>
     );

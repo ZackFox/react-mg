@@ -14,6 +14,10 @@ h1 {
   height: 100vh;
 }
 
+.sprite {
+  background: url('/img/sprite.png') no-repeat;
+}
+
 .menu {
   width: 503px;
   position: absolute;
@@ -94,7 +98,7 @@ h1 {
 
 .cards-set {
   clear: both;
-  width: 800px;
+  width: 760px;
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
@@ -107,48 +111,47 @@ h1 {
 }
 
 .card {
-  width: 115px;
-  height: 160px;
+  width: 109px;
+  height: 152px;
   position: relative;
   margin-bottom: 20px;
+  transform: perspective(180px) rotateY(0deg);
   transform-style: preserve-3d;
+  transition: transform 1s;
+  overflow: inherit;
+}
+
+.card-back,
+.card-front {
+  display: block;
+  width: 109px;
+  height: 152px;
+  position: absolute;
+  backface-visibility: hidden;
+  background: url('/img/sprite.png') no-repeat;
+  background-size: 1200px;
+  transition: opacity 1s;
+  transition-delay: 0.9s;
+}
+
+.card .card-back {
+  background-position: -872px -606px;
   transform: rotateY(0deg);
-  transition: 1s;
-  z-index: 25;
+  z-index: 15;
+}
+
+.card-front {
+  /* background-position: 0px 0px; */
+  transform: rotateY(180deg);
+  z-index: 10;
 }
 
 .flipped {
-  transform: perspective(180px) rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card:hover {
   cursor: pointer;
-}
-
-.card-front,
-.card-back {
-  width: 115px;
-  height: 159px;
-  position: absolute;
-  backface-visibility: hidden;
-  transition: 1s;
-  transition-delay: 0.9s;
-}
-
-.card-back {
-  z-index: 15;
-  top: 0;
-  left: 0;
-  transform: rotateY(0deg);
-  background: url('/img/BG.png') no-repeat;
-  background-size: 100%;
-}
-
-.card-front {
-  z-index: 10;
-  top: 0;
-  left: 0;
-  transform: rotateY(180deg);
 }
 
 .greatings span {
@@ -156,210 +159,158 @@ h1 {
 }
 
 .card-2H {
-  background: url('/img/2H.png') no-repeat;
-  background-size: 100%;
+  background-position: 0px -302px;
 }
 .card-2D {
-  background: url('/img/2D.png') no-repeat;
-  background-size: 100%;
+  background-position: 0px 0px;
 }
 .card-2C {
-  background: url('/img/2C.png') no-repeat;
-  background-size: 100%;
+  background-position: 0px -151px;
 }
 .card-2S {
-  background: url('/img/2S.png') no-repeat;
-  background-size: 100%;
+  background-position: 0px -454px;
 }
 .card-3H {
-  background: url('/img/3H.png') no-repeat;
-  background-size: 100%;
+  background-position: -109px -302px;
 }
 .card-3D {
-  background: url('/img/3D.png') no-repeat;
-  background-size: 100%;
+  background-position: -109px 0px;
 }
 .card-3C {
-  background: url('/img/3C.png') no-repeat;
-  background-size: 100%;
+  background-position: -109px -152px;
 }
 .card-3S {
-  background: url('/img/3S.png') no-repeat;
-  background-size: 100%;
+  background-position: -109px -454px;
 }
 .card-4H {
-  background: url('/img/4H.png') no-repeat;
-  background-size: 100%;
+  background-position: -218px -302px;
 }
 .card-4D {
-  background: url('/img/4D.png') no-repeat;
-  background-size: 100%;
+  background-position: -218px 0px;
 }
 .card-4C {
-  background: url('/img/4C.png') no-repeat;
-  background-size: 100%;
+  background-position: -218px -152px;
 }
 .card-4S {
-  background: url('/img/4S.png') no-repeat;
-  background-size: 100%;
+  background-position: -218px -454px;
 }
 .card-5H {
-  background: url('/img/5H.png') no-repeat;
-  background-size: 100%;
+  background-position: -327px -302px;
 }
 .card-5D {
-  background: url('/img/5D.png') no-repeat;
-  background-size: 100%;
+  background-position: -327px 0px;
 }
 .card-5C {
-  background: url('/img/5C.png') no-repeat;
-  background-size: 100%;
+  background-position: -327px -152px;
 }
 .card-5S {
-  background: url('/img/5S.png') no-repeat;
-  background-size: 100%;
+  background-position: -327px -454px;
 }
 .card-6H {
-  background: url('/img/6H.png') no-repeat;
-  background-size: 100%;
+  background-position: -436px -302px;
 }
 .card-6D {
-  background: url('/img/6D.png') no-repeat;
-  background-size: 100%;
+  background-position: -436px 0px;
 }
 .card-6C {
-  background: url('/img/6C.png') no-repeat;
-  background-size: 100%;
+  background-position: -436px -152px;
 }
 .card-6S {
-  background: url('/img/6S.png') no-repeat;
-  background-size: 100%;
+  background-position: -436px -454px;
 }
 .card-7H {
-  background: url('/img/7H.png') no-repeat;
-  background-size: 100%;
+  background-position: -545px -302px;
 }
 .card-7D {
-  background: url('/img/7D.png') no-repeat;
-  background-size: 100%;
+  background-position: -545px 0px;
 }
 .card-7C {
-  background: url('/img/7C.png') no-repeat;
-  background-size: 100%;
+  background-position: -545px -152px;
 }
 .card-7S {
-  background: url('/img/7S.png') no-repeat;
-  background-size: 100%;
+  background-position: -545px -454px;
 }
 .card-8H {
-  background: url('/img/8H.png') no-repeat;
-  background-size: 100%;
+  background-position: -653px -302px;
 }
 .card-8D {
-  background: url('/img/8D.png') no-repeat;
-  background-size: 100%;
+  background-position: -653px 0px;
 }
 .card-8C {
-  background: url('/img/8C.png') no-repeat;
-  background-size: 100%;
+  background-position: -653px -152px;
 }
 .card-8S {
-  background: url('/img/8S.png') no-repeat;
-  background-size: 100%;
+  background-position: -653px -454px;
 }
 .card-9H {
-  background: url('/img/9H.png') no-repeat;
-  background-size: 100%;
+  background-position: -763px -302px;
 }
 .card-9D {
-  background: url('/img/9D.png') no-repeat;
-  background-size: 100%;
+  background-position: -763px 0px;
 }
 .card-9C {
-  background: url('/img/9C.png') no-repeat;
-  background-size: 100%;
+  background-position: -763px -151px;
 }
 .card-9S {
-  background: url('/img/9S.png') no-repeat;
-  background-size: 100%;
+  background-position: -763px -454px;
 }
 .card-0H {
-  background: url('/img/0H.png') no-repeat;
-  background-size: 100%;
+  background-position: -872px -302px;
 }
 .card-0D {
-  background: url('/img/0D.png') no-repeat;
-  background-size: 100%;
+  background-position: -872px 0px;
 }
 .card-0C {
-  background: url('/img/0C.png') no-repeat;
-  background-size: 100%;
+  background-position: -872px -151px;
 }
 .card-0S {
-  background: url('/img/0S.png') no-repeat;
-  background-size: 100%;
+  background-position: -872px -454px;
 }
 .card-JH {
-  background: url('/img/JH.png') no-repeat;
-  background-size: 100%;
+  background-position: -980px -302px;
 }
 .card-JD {
-  background: url('/img/JD.png') no-repeat;
-  background-size: 100%;
+  background-position: -980px 0px;
 }
 .card-JC {
-  background: url('/img/JC.png') no-repeat;
-  background-size: 100%;
+  background-position: -980px -151px;
 }
 .card-JS {
-  background: url('/img/JS.png') no-repeat;
-  background-size: 100%;
+  background-position: -980px -454px;
 }
 .card-QH {
-  background: url('/img/QH.png') no-repeat;
-  background-size: 100%;
+  background-position: -1089px -302px;
 }
 .card-QD {
-  background: url('/img/QD.png') no-repeat;
-  background-size: 100%;
+  background-position: -1089px 0px;
 }
 .card-QC {
-  background: url('/img/QC.png') no-repeat;
-  background-size: 100%;
+  background-position: -1089px -151px;
 }
 .card-QS {
-  background: url('/img/QS.png') no-repeat;
-  background-size: 100%;
+  background-position: -1089px -454px;
 }
 .card-KH {
-  background: url('/img/KH.png') no-repeat;
-  background-size: 100%;
+  background-position: -218px -605px;
 }
 .card-KD {
-  background: url('/img/KD.png') no-repeat;
-  background-size: 100%;
+  background-position: 0px -605px;
 }
 .card-KC {
-  background: url('/img/KC.png') no-repeat;
-  background-size: 100%;
+  background-position: -109px -605px;
 }
 .card-KS {
-  background: url('/img/KS.png') no-repeat;
-  background-size: 100%;
+  background-position: -327px -605px;
 }
 .card-AH {
-  background: url('/img/AH.png') no-repeat;
-  background-size: 100%;
+  background-position: -654px -605px;
 }
 .card-AD {
-  background: url('/img/AD.png') no-repeat;
-  background-size: 100%;
+  background-position: -436px -605px;
 }
 .card-AC {
-  background: url('/img/AC.png') no-repeat;
-  background-size: 100%;
+  background-position: -545px -605px;
 }
 .card-AS {
-  background: url('/img/AS.png') no-repeat;
-  background-size: 100%;
+  background-position: -763px -605px;
 }

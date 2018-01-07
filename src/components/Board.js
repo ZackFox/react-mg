@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardItem from './CardItem';
+import PropTypes from 'prop-types';
 
 class Board extends Component {
   componentDidMount() {
@@ -7,6 +8,10 @@ class Board extends Component {
   }
 
   resetHandle = () => {
+    const timeOutIndex = setTimeout(() => {}, 0);
+    for (let i = 0; i < timeOutIndex; i++) {
+      clearTimeout(i);
+    }
     this.props.resetGame();
   };
 
@@ -27,12 +32,12 @@ class Board extends Component {
           <div className="message">
             <span>{message}</span>
           </div>
-          <div className="score" data-tid="Menu-scores">
-            Очки: <span>{score}</span>
+          <div className="score">
+            Очки: <span data-tid="Menu-scores">{score}</span>
           </div>
         </div>
 
-        <div className="cards-set">
+        <div className="cards-set" data-tid="Deck">
           {cards.map(card => (
             <CardItem key={card.id} card={card} compareHandler={comparator} />
           ))}
@@ -41,5 +46,13 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = {
+  cards: PropTypes.arrayOf({}).isRequired,
+  score: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  resetGame: PropTypes.func.isRequired,
+  comparator: PropTypes.func.isRequired,
+};
 
 export default Board;

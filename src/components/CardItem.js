@@ -12,16 +12,17 @@ class CardItem extends Component {
 
   render() {
     const { card } = this.props;
-    const flip = card.isFlipped ? 'flipped' : '';
-    const hide = card.isMatch ? 'hidden' : '';
-
     return (
       <div
-        className={`card ${flip}`}
+        className={`card ${card.isFlipped ? 'flipped' : ''}`}
         onClick={this.clickHandler}
         data-tid={`Card${card.isFlipped ? '-flipped' : ''}`}
       >
-        <div className={`card-front ${hide} card-${card.value}`} />
+        <div
+          className={`card-front card-${card.value} ${
+            card.isMatch ? 'hidden' : ''
+          }`}
+        />
         <div className="card-back" />
       </div>
     );
